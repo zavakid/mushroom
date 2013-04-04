@@ -1,0 +1,11 @@
+## for eclipse
+.classpath
+.project
+.settings/
+
+## for maven generated
+target/
+
+## others
+*.bak
+*.~
