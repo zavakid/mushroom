@@ -19,41 +19,26 @@
  */
 package com.zavakid.mushroom;
 
+
 /**
- * The JMX interface to the metrics system
+ * A generic immutable gauge metric
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
+ * @author zavakid 2013 2013-4-4 下午4:59:18
  * @since 0.1
  */
-public interface MetricsSystemMXBean {
+public abstract class MetricGauge<T extends Number> extends Metric {
 
     /**
-     * Start the metrics system
+     * Construct a gauge metric
      * 
-     * @exception MetricsException
+     * @param name of the metric
+     * @param description of the metric
      */
-    public void start();
+    public MetricGauge(String name, String description){
+        super(name, description);
+    }
 
-    /**
-     * Stop the metrics system
-     * 
-     * @exception MetricsException
-     */
-    public void stop();
-
-    /**
-     * Force a refresh of MBeans
-     * 
-     * @exception MetricsException
-     */
-    public void refreshMBeans();
-
-    /**
-     * @return the current config Note, avoid getConfig, as it'll turn it into an attribute, which doesn't support
-     * multiple lines in the values.
-     * @exception MetricsException
-     */
-    public String currentConfig();
+    public abstract T value();
 
 }

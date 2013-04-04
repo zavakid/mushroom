@@ -20,40 +20,17 @@
 package com.zavakid.mushroom;
 
 /**
- * The JMX interface to the metrics system
- * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
+ * @author zavakid 2013 2013-4-4 下午4:42:53
  * @since 0.1
  */
-public interface MetricsSystemMXBean {
+public interface MetricsBuilder {
 
     /**
-     * Start the metrics system
+     * Add a metrics record
      * 
-     * @exception MetricsException
+     * @param name of the record
+     * @return a metrics record builder for the record
      */
-    public void start();
-
-    /**
-     * Stop the metrics system
-     * 
-     * @exception MetricsException
-     */
-    public void stop();
-
-    /**
-     * Force a refresh of MBeans
-     * 
-     * @exception MetricsException
-     */
-    public void refreshMBeans();
-
-    /**
-     * @return the current config Note, avoid getConfig, as it'll turn it into an attribute, which doesn't support
-     * multiple lines in the values.
-     * @exception MetricsException
-     */
-    public String currentConfig();
-
+    public MetricsRecordBuilder addRecord(String name);
 }

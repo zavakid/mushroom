@@ -19,41 +19,21 @@
  */
 package com.zavakid.mushroom;
 
+import org.apache.commons.configuration.SubsetConfiguration;
+
 /**
- * The JMX interface to the metrics system
+ * A fairly generic plugin interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
+ * @author zavakid 2013 2013-4-4 下午5:51:30
  * @since 0.1
  */
-public interface MetricsSystemMXBean {
+public interface MetricsPlugin {
 
     /**
-     * Start the metrics system
+     * Initialize the plugin
      * 
-     * @exception MetricsException
+     * @param conf the configuration object for the plugin
      */
-    public void start();
-
-    /**
-     * Stop the metrics system
-     * 
-     * @exception MetricsException
-     */
-    public void stop();
-
-    /**
-     * Force a refresh of MBeans
-     * 
-     * @exception MetricsException
-     */
-    public void refreshMBeans();
-
-    /**
-     * @return the current config Note, avoid getConfig, as it'll turn it into an attribute, which doesn't support
-     * multiple lines in the values.
-     * @exception MetricsException
-     */
-    public String currentConfig();
-
+    void init(SubsetConfiguration conf);
 }

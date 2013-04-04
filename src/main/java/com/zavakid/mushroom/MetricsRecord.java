@@ -20,40 +20,47 @@
 package com.zavakid.mushroom;
 
 /**
- * The JMX interface to the metrics system
+ * An immutable snapshot of metrics with a timestamp
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
+ * @author zavakid 2013 2013-4-4 下午5:54:16
  * @since 0.1
  */
-public interface MetricsSystemMXBean {
+public interface MetricsRecord {
 
     /**
-     * Start the metrics system
+     * Get the timestamp of the metrics
      * 
-     * @exception MetricsException
+     * @return the timestamp
      */
-    public void start();
+    long timestamp();
 
     /**
-     * Stop the metrics system
+     * Get the record name of the metrics
      * 
-     * @exception MetricsException
+     * @return the record name
      */
-    public void stop();
+    String name();
 
     /**
-     * Force a refresh of MBeans
+     * Get the context name of the metrics
      * 
-     * @exception MetricsException
+     * @return the context name
      */
-    public void refreshMBeans();
+    String context();
 
     /**
-     * @return the current config Note, avoid getConfig, as it'll turn it into an attribute, which doesn't support
-     * multiple lines in the values.
-     * @exception MetricsException
+     * Get the tags of the record
+     * 
+     * @return the tags
      */
-    public String currentConfig();
+    Iterable<MetricsTag> tags();
+
+    /**
+     * Get the metrics of the record
+     * 
+     * @return the metrics
+     */
+    Iterable<Metric> metrics();
 
 }

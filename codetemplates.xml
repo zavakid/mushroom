@@ -21,7 +21,7 @@
 */
 /**
 	Notice : this source is extracted from Hadoop metric2 package
-			 and some sourc ecode may changed by zavakid
+			 and some source code may changed by zavakid
 */</template><template autoinsert="false" context="typecomment_context" deleted="false" description="Comment for created types" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.typecomment" name="typecomment">/**
  * @author Hadoop metric2 package's authors
  * @author ${user} ${year} ${date} ${time}

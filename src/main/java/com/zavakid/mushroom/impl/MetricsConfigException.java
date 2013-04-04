@@ -17,43 +17,31 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.impl;
+
+import com.zavakid.mushroom.MetricsException;
 
 /**
- * The JMX interface to the metrics system
+ * The metrics configuration runtime exception
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
+ * @author zavakid 2013 2013-4-4 下午6:21:11
  * @since 0.1
  */
-public interface MetricsSystemMXBean {
+public class MetricsConfigException extends MetricsException {
 
-    /**
-     * Start the metrics system
-     * 
-     * @exception MetricsException
-     */
-    public void start();
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * Stop the metrics system
-     * 
-     * @exception MetricsException
-     */
-    public void stop();
+    MetricsConfigException(String message){
+        super(message);
+    }
 
-    /**
-     * Force a refresh of MBeans
-     * 
-     * @exception MetricsException
-     */
-    public void refreshMBeans();
+    MetricsConfigException(String message, Throwable cause){
+        super(message, cause);
+    }
 
-    /**
-     * @return the current config Note, avoid getConfig, as it'll turn it into an attribute, which doesn't support
-     * multiple lines in the values.
-     * @exception MetricsException
-     */
-    public String currentConfig();
+    MetricsConfigException(Throwable cause){
+        super(cause);
+    }
 
 }
