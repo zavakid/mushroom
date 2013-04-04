@@ -17,27 +17,31 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.impl;
+
+import com.zavakid.mushroom.MetricGauge;
+import com.zavakid.mushroom.MetricsVisitor;
 
 /**
- * The metrics sink interface
- * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
+ * @author zavakid 2013 2013-4-4 下午8:11:36
  * @since 0.1
  */
-public interface MetricsSink extends MetricsPlugin {
+public class MetricGaugeFloat extends MetricGauge<Float> {
 
-    /**
-     * Put a metrics record in the sink
-     * 
-     * @param record the record to put
-     */
-    void putMetrics(MetricsRecord record);
+    final float value;
 
-    /**
-     * Flush any buffered metrics
-     */
-    void flush();
+    MetricGaugeFloat(String name, String description, float value){
+        super(name, description);
+        this.value = value;
+    }
+
+    public Float value() {
+        return value;
+    }
+
+    public void visit(MetricsVisitor visitor) {
+        visitor.gauge(this, value);
+    }
 
 }

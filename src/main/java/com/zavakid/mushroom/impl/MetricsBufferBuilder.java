@@ -17,27 +17,27 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.impl;
+
+import java.util.ArrayList;
 
 /**
- * The metrics sink interface
+ * Builder for the immutable metrics buffers
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
+ * @author zavakid 2013 2013-4-4 下午10:09:15
  * @since 0.1
  */
-public interface MetricsSink extends MetricsPlugin {
+class MetricsBufferBuilder extends ArrayList<MetricsBuffer.Entry> {
 
-    /**
-     * Put a metrics record in the sink
-     * 
-     * @param record the record to put
-     */
-    void putMetrics(MetricsRecord record);
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * Flush any buffered metrics
-     */
-    void flush();
+    boolean add(String name, Iterable<MetricsRecordImpl> records) {
+        return add(new MetricsBuffer.Entry(name, records));
+    }
+
+    MetricsBuffer get() {
+        return new MetricsBuffer(this);
+    }
 
 }

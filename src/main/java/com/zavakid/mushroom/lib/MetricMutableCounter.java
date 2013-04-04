@@ -17,27 +17,30 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.lib;
 
 /**
- * The metrics sink interface
+ * The mutable counter (monotonically increasing) metric interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
+ * @author zavakid 2013 2013-4-4 下午9:55:27
  * @since 0.1
  */
-public interface MetricsSink extends MetricsPlugin {
+public abstract class MetricMutableCounter<T extends Number> extends MetricMutable {
 
     /**
-     * Put a metrics record in the sink
+     * Construct the metric with name and description
      * 
-     * @param record the record to put
+     * @param name
+     * @param description
      */
-    void putMetrics(MetricsRecord record);
+    public MetricMutableCounter(String name, String description){
+        super(name, description);
+    }
 
     /**
-     * Flush any buffered metrics
+     * Increment the metric value by 1.
      */
-    void flush();
+    public abstract void incr();
 
 }

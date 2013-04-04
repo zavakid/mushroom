@@ -17,27 +17,31 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.impl;
+
+import com.zavakid.mushroom.MetricCounter;
+import com.zavakid.mushroom.MetricsVisitor;
 
 /**
- * The metrics sink interface
- * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
+ * @author zavakid 2013 2013-4-4 下午8:07:09
  * @since 0.1
  */
-public interface MetricsSink extends MetricsPlugin {
+public class MetricCounterLong extends MetricCounter<Long> {
 
-    /**
-     * Put a metrics record in the sink
-     * 
-     * @param record the record to put
-     */
-    void putMetrics(MetricsRecord record);
+    private final long value;
 
-    /**
-     * Flush any buffered metrics
-     */
-    void flush();
+    MetricCounterLong(String name, String description, long value){
+        super(name, description);
+        this.value = value;
+    }
+
+    public Long value() {
+        return value;
+    }
+
+    public void visit(MetricsVisitor visitor) {
+        visitor.counter(this, value);
+    }
 
 }

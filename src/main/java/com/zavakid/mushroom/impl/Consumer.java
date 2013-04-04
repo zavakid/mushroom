@@ -17,27 +17,17 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.impl;
 
 /**
- * The metrics sink interface
+ * A simple generic consumer interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
+ * @author zavakid 2013 2013-4-4 下午8:24:50
  * @since 0.1
  */
-public interface MetricsSink extends MetricsPlugin {
+public interface Consumer<T> {
 
-    /**
-     * Put a metrics record in the sink
-     * 
-     * @param record the record to put
-     */
-    void putMetrics(MetricsRecord record);
-
-    /**
-     * Flush any buffered metrics
-     */
-    void flush();
+    void consume(T object) throws InterruptedException;
 
 }
