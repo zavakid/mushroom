@@ -31,7 +31,6 @@ import java.util.NoSuchElementException;
  * One only needs to implement the tryNext() method and call done() when done.
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午10:04:18
  * @since 0.1
  */
 public abstract class TryIterator<T> implements Iterator<T> {

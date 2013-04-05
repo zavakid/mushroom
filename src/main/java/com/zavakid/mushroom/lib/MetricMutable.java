@@ -25,7 +25,6 @@ import com.zavakid.mushroom.MetricsRecordBuilder;
  * The mutable metric interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:52:55
  * @since 0.1
  */
 public abstract class MetricMutable {

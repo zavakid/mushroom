@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * The metrics sink interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:40:43
  * @since 0.1
  */
 public interface MetricsSink extends MetricsPlugin {

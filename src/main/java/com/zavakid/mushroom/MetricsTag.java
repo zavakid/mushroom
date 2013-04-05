@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * Immutable tag for metrics (for grouping on host/queue/username etc.)
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:47:37
  * @since 0.1
  */
 public class MetricsTag {

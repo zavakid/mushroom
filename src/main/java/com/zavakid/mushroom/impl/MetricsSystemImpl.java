@@ -57,7 +57,6 @@ import com.zavakid.mushroom.util.MBeans;
  * A base class for metrics system singletons
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:28:45
  * @since 0.1
  */
 public class MetricsSystemImpl implements MetricsSystem {

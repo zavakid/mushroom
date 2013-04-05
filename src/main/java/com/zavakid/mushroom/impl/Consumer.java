@@ -23,7 +23,6 @@ package com.zavakid.mushroom.impl;
  * A simple generic consumer interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午8:24:50
  * @since 0.1
  */
 public interface Consumer<T> {

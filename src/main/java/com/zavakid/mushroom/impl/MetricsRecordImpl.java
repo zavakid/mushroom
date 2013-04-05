@@ -26,7 +26,6 @@ import com.zavakid.mushroom.util.Contracts;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:58:27
  * @since 0.1
  */
 public class MetricsRecordImpl implements MetricsRecord {

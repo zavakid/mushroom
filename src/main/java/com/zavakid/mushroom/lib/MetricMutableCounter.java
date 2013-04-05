@@ -23,7 +23,6 @@ package com.zavakid.mushroom.lib;
  * The mutable counter (monotonically increasing) metric interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:55:27
  * @since 0.1
  */
 public abstract class MetricMutableCounter<T extends Number> extends MetricMutable {

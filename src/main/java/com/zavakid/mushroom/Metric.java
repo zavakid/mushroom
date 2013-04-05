@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * The immutable metric
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:50:15
  * @since 0.1
  */
 public abstract class Metric {

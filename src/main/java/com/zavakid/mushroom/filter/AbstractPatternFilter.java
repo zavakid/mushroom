@@ -34,7 +34,6 @@ import com.zavakid.mushroom.MetricsTag;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-5 下午11:59:51
  * @since 0.1
  */
 public abstract class AbstractPatternFilter extends MetricsFilter {

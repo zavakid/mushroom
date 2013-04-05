@@ -25,7 +25,6 @@ import com.zavakid.mushroom.MetricsRecordBuilder;
  * A mutable long counter
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:57:08
  * @since 0.1
  */
 public class MetricMutableCounterLong extends MetricMutableCounter<Long> {

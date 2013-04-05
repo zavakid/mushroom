@@ -26,7 +26,6 @@ import com.zavakid.mushroom.impl.MetricsSystemImpl;
  * 使用 enum 实现单例
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:26:21
  * @since 0.1
  */
 public enum DefaultMetricsSystem implements MetricsSystem {

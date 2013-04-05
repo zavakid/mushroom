@@ -33,7 +33,6 @@ import com.zavakid.mushroom.util.SampleStat;
  * e.g., new MetricMutableStat("rpcName", "rpcName stats", "ops", "time");
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午10:00:01
  * @since 0.1
  */
 public class MetricMutableStat extends MetricMutable {

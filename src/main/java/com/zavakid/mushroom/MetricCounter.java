@@ -24,7 +24,6 @@ package com.zavakid.mushroom;
  * 
  * @param <T> value type of the metric
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:00:57
  * @since 0.1
  */
 public abstract class MetricCounter<T extends Number> extends Metric {

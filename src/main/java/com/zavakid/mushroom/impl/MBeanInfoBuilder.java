@@ -35,7 +35,6 @@ import com.zavakid.mushroom.MetricsVisitor;
  * Helper class to build MBeanInfo from metrics records
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:57:22
  * @since 0.1
  */
 public class MBeanInfoBuilder implements MetricsVisitor {

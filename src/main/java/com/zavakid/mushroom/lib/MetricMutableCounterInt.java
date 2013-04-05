@@ -25,7 +25,6 @@ import com.zavakid.mushroom.MetricsRecordBuilder;
  * A mutable int counter for implementing metrics sources
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:56:34
  * @since 0.1
  */
 public class MetricMutableCounterInt extends MetricMutableCounter<Integer> {

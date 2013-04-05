@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * A general metrics exception wrapper
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:33:05
  * @since 0.1
  */
 public class MetricsException extends RuntimeException {

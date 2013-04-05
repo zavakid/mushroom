@@ -29,7 +29,6 @@ import com.zavakid.mushroom.util.TryIterator;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午10:03:50
  * @since 0.1
  */
 public class MetricsRecordFiltered implements MetricsRecord {

@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * An immutable snapshot of metrics with a timestamp
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:54:16
  * @since 0.1
  */
 public interface MetricsRecord {

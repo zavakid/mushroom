@@ -23,7 +23,6 @@ package com.zavakid.mushroom.lib;
  * The mutable gauge metric interface
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:58:01
  * @since 0.1
  */
 public abstract class MetricMutableGauge<T extends Number> extends MetricMutable {

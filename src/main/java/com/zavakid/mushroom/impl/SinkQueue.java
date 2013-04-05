@@ -28,7 +28,6 @@ import java.util.ConcurrentModificationException;
  * events
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午8:20:19
  * @since 0.1
  */
 public class SinkQueue<T> {

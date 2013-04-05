@@ -25,7 +25,6 @@ import com.zavakid.mushroom.Metric;
  * Factory class for mutable metrics
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:54:20
  * @since 0.1
  */
 public class MetricMutableFactory {

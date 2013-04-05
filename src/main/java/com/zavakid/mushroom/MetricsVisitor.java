@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * A visitor interface for metrics
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:55:13
  * @since 0.1
  */
 public interface MetricsVisitor {

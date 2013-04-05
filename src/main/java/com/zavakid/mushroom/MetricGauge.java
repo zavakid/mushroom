@@ -19,12 +19,10 @@
  */
 package com.zavakid.mushroom;
 
-
 /**
  * A generic immutable gauge metric
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:59:18
  * @since 0.1
  */
 public abstract class MetricGauge<T extends Number> extends Metric {

@@ -26,7 +26,6 @@ import org.apache.commons.configuration.SubsetConfiguration;
  * Helper class for building configs, mostly used in tests
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-6 上午12:03:52
  * @since 0.1
  */
 public class ConfigBuilder {

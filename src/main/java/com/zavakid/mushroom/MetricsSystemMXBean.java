@@ -23,7 +23,6 @@ package com.zavakid.mushroom;
  * The JMX interface to the metrics system
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:24:53
  * @since 0.1
  */
 public interface MetricsSystemMXBean {

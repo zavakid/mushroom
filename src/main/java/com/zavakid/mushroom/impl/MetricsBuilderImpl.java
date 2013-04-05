@@ -27,7 +27,6 @@ import com.zavakid.mushroom.MetricsFilter;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午6:51:52
  * @since 0.1
  */
 public class MetricsBuilderImpl extends ArrayList<MetricsRecordBuilderImpl> implements MetricsBuilder {

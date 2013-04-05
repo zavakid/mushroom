@@ -32,7 +32,6 @@ import com.zavakid.mushroom.MetricsTag;
  * metrics source easier.
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午6:56:07
  * @since 0.1
  */
 public class MetricsRegistry {

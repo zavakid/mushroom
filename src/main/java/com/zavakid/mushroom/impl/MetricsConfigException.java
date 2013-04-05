@@ -25,7 +25,6 @@ import com.zavakid.mushroom.MetricsException;
  * The metrics configuration runtime exception
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午6:21:11
  * @since 0.1
  */
 public class MetricsConfigException extends MetricsException {

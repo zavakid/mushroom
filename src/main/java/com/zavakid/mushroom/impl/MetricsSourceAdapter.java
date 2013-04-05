@@ -45,7 +45,6 @@ import com.zavakid.mushroom.util.MBeans;
  * An adapter class for metrics source and associated filter and jmx impl
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:44:08
  * @since 0.1
  */
 public class MetricsSourceAdapter implements DynamicMBean {

@@ -31,7 +31,6 @@ import com.zavakid.mushroom.lib.MetricsRegistry;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午6:53:09
  * @since 0.1
  */
 public class MetricsRecordBuilderImpl extends MetricsRecordBuilder {

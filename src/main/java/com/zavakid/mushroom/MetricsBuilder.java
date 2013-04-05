@@ -21,7 +21,6 @@ package com.zavakid.mushroom;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午4:42:53
  * @since 0.1
  */
 public interface MetricsBuilder {

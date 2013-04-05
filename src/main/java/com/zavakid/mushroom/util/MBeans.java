@@ -36,7 +36,6 @@ import org.apache.commons.logging.LogFactory;
  * as described in the doc for {link {@link #register(String, String, Object)}
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午6:40:08
  * @since 0.1
  */
 public class MBeans {

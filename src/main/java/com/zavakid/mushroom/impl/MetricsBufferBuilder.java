@@ -25,7 +25,6 @@ import java.util.ArrayList;
  * Builder for the immutable metrics buffers
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午10:09:15
  * @since 0.1
  */
 class MetricsBufferBuilder extends ArrayList<MetricsBuffer.Entry> {

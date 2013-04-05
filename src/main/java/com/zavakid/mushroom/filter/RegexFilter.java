@@ -25,7 +25,6 @@ import java.util.regex.Pattern;
  * A regex pattern filter for metrics
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-5 下午11:58:08
  * @since 0.1
  */
 public class RegexFilter extends AbstractPatternFilter {

@@ -25,7 +25,6 @@ import com.zavakid.mushroom.MetricsRecordBuilder;
  * A mutable int gauge
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午9:58:35
  * @since 0.1
  */
 public class MetricMutableGaugeInt extends MetricMutableGauge<Integer> {

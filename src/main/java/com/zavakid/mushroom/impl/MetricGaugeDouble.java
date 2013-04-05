@@ -24,7 +24,6 @@ import com.zavakid.mushroom.MetricsVisitor;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午8:12:00
  * @since 0.1
  */
 public class MetricGaugeDouble extends MetricGauge<Double> {

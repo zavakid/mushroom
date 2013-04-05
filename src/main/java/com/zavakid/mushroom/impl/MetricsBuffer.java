@@ -25,7 +25,6 @@ import java.util.Iterator;
  * An immutable element for the sink queues.
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午8:13:39
  * @since 0.1
  */
 public class MetricsBuffer implements Iterable<MetricsBuffer.Entry> {

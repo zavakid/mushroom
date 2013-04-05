@@ -25,7 +25,6 @@ import org.apache.commons.configuration.SubsetConfiguration;
  * The metrics filter
  * 
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-4 下午5:52:53
  * @since 0.1
  */
 public abstract class MetricsFilter implements MetricsPlugin {

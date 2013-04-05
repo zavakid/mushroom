@@ -32,7 +32,6 @@ import com.zavakid.mushroom.impl.ConfigBuilder;
 
 /**
  * @author Hadoop metric2 package's authors
- * @author zavakid 2013 2013-4-6 上午12:03:03
  * @since 0.1
  */
 public class TestPatternFilter {
