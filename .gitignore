@@ -5,6 +5,7 @@
 
 ## for maven generated
 target/
+test-output
 
 ## others
 *.bak

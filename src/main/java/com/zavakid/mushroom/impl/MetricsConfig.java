@@ -40,6 +40,8 @@ import com.zavakid.mushroom.MetricsFilter;
 import com.zavakid.mushroom.MetricsPlugin;
 
 /**
+ * syntax: [prefix].[source|sink|jmx].[instance].[options]
+ * 
  * @author Hadoop metric2 package's authors
  * @since 0.1
  */

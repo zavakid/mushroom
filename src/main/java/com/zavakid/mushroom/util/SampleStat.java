@@ -150,11 +150,11 @@ public class SampleStat {
         // Float.MAX_VALUE is big enough, and using Double.MAX_VALUE makes 
         // Ganglia core due to buffer overflow.
         // The same reasoning applies to the MIN_VALUE counterparts.
-        static final double DEFAULT_MIN_VALUE = Float.MAX_VALUE;
-        static final double DEFAULT_MAX_VALUE = Float.MIN_VALUE;
+        public static final double DEFAULT_MIN_VALUE = Float.MAX_VALUE;
+        public static final double DEFAULT_MAX_VALUE = Float.MIN_VALUE;
 
-        private double      min               = DEFAULT_MIN_VALUE;
-        private double      max               = DEFAULT_MAX_VALUE;
+        private double             min               = DEFAULT_MIN_VALUE;
+        private double             max               = DEFAULT_MAX_VALUE;
 
         public void add(double value) {
             if (value > max) max = value;

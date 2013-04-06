@@ -105,31 +105,31 @@ public class TestPatternFilter {
     }
 
     static void shouldAccept(SubsetConfiguration conf, List<MetricsTag> tags) {
-        //assertTrue("accepts " + tags, newGlobFilter(conf).accepts(tags));
+        assertTrue("accepts " + tags, newGlobFilter(conf).accepts(tags));
         assertTrue("accepts " + tags, newRegexFilter(conf).accepts(tags));
     }
 
     static void shouldReject(SubsetConfiguration conf, String s) {
-        //assertTrue("rejects " + s, !newGlobFilter(conf).accepts(s));
+        assertTrue("rejects " + s, !newGlobFilter(conf).accepts(s));
         assertTrue("rejects " + s, !newRegexFilter(conf).accepts(s));
     }
 
     static void shouldReject(SubsetConfiguration conf, List<MetricsTag> tags) {
-        //assertTrue("rejects " + tags, !newGlobFilter(conf).accepts(tags));
+        assertTrue("rejects " + tags, !newGlobFilter(conf).accepts(tags));
         assertTrue("rejects " + tags, !newRegexFilter(conf).accepts(tags));
     }
 
-    //    /**
-    //     * Create a new glob filter with a config object
-    //     * 
-    //     * @param conf the config object
-    //     * @return the filter
-    //     */
-    //    public static GlobFilter newGlobFilter(SubsetConfiguration conf) {
-    //        GlobFilter f = new GlobFilter();
-    //        f.init(conf);
-    //        return f;
-    //    }
+    /**
+     * Create a new glob filter with a config object
+     * 
+     * @param conf the config object
+     * @return the filter
+     */
+    public static GlobFilter newGlobFilter(SubsetConfiguration conf) {
+        GlobFilter f = new GlobFilter();
+        f.init(conf);
+        return f;
+    }
 
     /**
      * Create a new regex filter with a config object
