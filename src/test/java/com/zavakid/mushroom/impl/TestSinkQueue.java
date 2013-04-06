@@ -28,6 +28,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.ConcurrentModificationException;
+import java.util.concurrent.Semaphore;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -266,6 +267,7 @@ public class TestSinkQueue {
 
     private SinkQueue<Integer> newSleepingConsumerQueue(int capacity, int... values) {
         final SinkQueue<Integer> q = new SinkQueue<Integer>(capacity);
+        final Semaphore semaphore = new Semaphore(0);
         for (int i : values) {
             q.enqueue(i);
         }
@@ -277,6 +279,7 @@ public class TestSinkQueue {
                     q.consume(new Consumer<Integer>() {
 
                         public void consume(Integer e) throws InterruptedException {
+                            semaphore.release(1);
                             LOG.info("sleeping");
                             Thread.sleep(1000 * 86400); // a long time
                         }
@@ -289,7 +292,11 @@ public class TestSinkQueue {
         t.setName("Sleeping consumer");
         t.setDaemon(true); // so jvm can exit
         t.start();
-        Thread.yield(); // Let the consumer consume
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         LOG.debug("Returning new sleeping consumer queue");
         return q;
     }
