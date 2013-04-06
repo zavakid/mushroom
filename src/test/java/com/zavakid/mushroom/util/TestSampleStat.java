@@ -17,7 +17,7 @@
  Notice : this source is extracted from Hadoop metric2 package
  and some source code may changed by zavakid
  */
-package com.zavakid.mushroom;
+package com.zavakid.mushroom.util;
 
 import static org.junit.Assert.assertEquals;
 
