@@ -24,10 +24,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.io.File;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -43,6 +47,7 @@ import com.zavakid.mushroom.lib.AbstractMetricsSource;
 import com.zavakid.mushroom.lib.MetricMutableCounterLong;
 import com.zavakid.mushroom.lib.MetricMutableGaugeLong;
 import com.zavakid.mushroom.lib.MetricMutableStat;
+import com.zavakid.mushroom.util.FileUtils;
 
 /**
  * Test the MetricsSystemImpl class
@@ -53,24 +58,28 @@ import com.zavakid.mushroom.lib.MetricMutableStat;
 @RunWith(MockitoJUnitRunner.class)
 public class TestMetricsSystemImpl {
 
-    private static final Log              LOG      = LogFactory.getLog(TestMetricsSystemImpl.class);
+    private static final Log              LOG         = LogFactory.getLog(TestMetricsSystemImpl.class);
+    static final Collection<File>         NEED_DELETE = new HashSet<File>();
+
     @Captor
     private ArgumentCaptor<MetricsRecord> r1;
     @Captor
     private ArgumentCaptor<MetricsRecord> r2;
     @Captor
     private ArgumentCaptor<MetricsRecord> r3;
-    private static String                 hostname = MetricsSystemImpl.getHostname();
+    private static String                 hostname    = MetricsSystemImpl.getHostname();
 
     @Test
     public void testInitFirst() throws Exception {
+        String fileName = TestMetricsConfig.getTestFilename("mushroom-metric-test");
         ConfigBuilder cb = new ConfigBuilder().add("default.period", 8)
                                               .add("source.filter.class", "com.zavakid.mushroom.filter.GlobFilter")
                                               .add("test.*.source.filter.class", "${source.filter.class}")
                                               .add("test.*.source.filter.exclude", "s1*")
                                               .add("test.sink.sink3.source.filter.class", "${source.filter.class}")
-                                              .add("test.sink.sink3.source.filter.exclude", "s2*")
-                                              .save(TestMetricsConfig.getTestFilename("mushroom-metric-test"));
+                                              .add("test.sink.sink3.source.filter.exclude", "s2*").save(fileName);
+        NEED_DELETE.add(new File(fileName));
+
         MetricsSystemImpl ms = new MetricsSystemImpl("Test");
         ms.start();
         TestSource s1 = ms.register("s1", "s1 desc", new TestSource("s1rec"));
@@ -127,6 +136,11 @@ public class TestMetricsSystemImpl {
             g1 = registry.newGauge("g1", "g1 desc", 2L);
             s1 = registry.newStat("s1", "s1 desc", "ops", "time");
         }
+    }
+
+    @AfterClass
+    public static void deleteResource() {
+        FileUtils.deleteFiles(NEED_DELETE);
     }
 
 }

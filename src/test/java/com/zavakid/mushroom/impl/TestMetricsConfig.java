@@ -22,12 +22,18 @@ package com.zavakid.mushroom.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.AfterClass;
 import org.junit.Test;
+
+import com.zavakid.mushroom.util.FileUtils;
 
 /**
  * Test metrics configuration
@@ -38,7 +44,8 @@ import org.junit.Test;
  */
 public class TestMetricsConfig {
 
-    static final Log LOG = LogFactory.getLog(TestMetricsConfig.class);
+    static final Log              LOG         = LogFactory.getLog(TestMetricsConfig.class);
+    static final Collection<File> NEED_DELETE = new HashSet<File>();
 
     /**
      * Common use cases
@@ -48,20 +55,20 @@ public class TestMetricsConfig {
     @Test
     public void testCommon() throws Exception {
         String filename = getTestFilename("test-metrics2");
-        new ConfigBuilder().add("*.foo", "default foo").add("p1.*.bar", "p1 default bar").add("p1.t1.*.bar",
-                                                                                              "p1.t1 default bar").add("p1.t1.i1.name",
-                                                                                                                       "p1.t1.i1.name").add("p1.t1.42.bar",
-                                                                                                                                            "p1.t1.42.bar").add("p1.t2.i1.foo",
-                                                                                                                                                                "p1.t2.i1.foo").add("p2.*.foo",
-                                                                                                                                                                                    "p2 default foo").save(filename);
+        new ConfigBuilder().add("*.foo", "default foo").add("p1.*.bar", "p1 default bar")
+                           .add("p1.t1.*.bar", "p1.t1 default bar").add("p1.t1.i1.name", "p1.t1.i1.name")
+                           .add("p1.t1.42.bar", "p1.t1.42.bar").add("p1.t2.i1.foo", "p1.t2.i1.foo")
+                           .add("p2.*.foo", "p2 default foo").save(filename);
+
+        NEED_DELETE.add(new File(filename));
 
         MetricsConfig mc = MetricsConfig.create("p1", filename);
         ConfigUtil.dump("mc:", mc);
 
-        Configuration expected = new ConfigBuilder().add("*.bar", "p1 default bar").add("t1.*.bar", "p1.t1 default bar").add("t1.i1.name",
-                                                                                                                             "p1.t1.i1.name").add("t1.42.bar",
-                                                                                                                                                  "p1.t1.42.bar").add("t2.i1.foo",
-                                                                                                                                                                      "p1.t2.i1.foo").config;
+        Configuration expected = new ConfigBuilder().add("*.bar", "p1 default bar")
+                                                    .add("t1.*.bar", "p1.t1 default bar")
+                                                    .add("t1.i1.name", "p1.t1.i1.name")
+                                                    .add("t1.42.bar", "p1.t1.42.bar").add("t2.i1.foo", "p1.t2.i1.foo").config;
 
         ConfigUtil.assertEq(expected, mc);
 
@@ -110,6 +117,7 @@ public class TestMetricsConfig {
     @Test
     public void testLoadFirst() throws Exception {
         String filename = getTestFilename("hadoop-metrics2-p1");
+        NEED_DELETE.add(new File(filename));
         new ConfigBuilder().add("p1.foo", "p1foo").save(filename);
 
         MetricsConfig mc = MetricsConfig.create("p1", filename);
@@ -128,6 +136,11 @@ public class TestMetricsConfig {
      */
     public static String getTestFilename(String basename) {
         return "target/classes/" + basename + ".properties";
+    }
+
+    @AfterClass
+    public static void deleteResource() {
+        FileUtils.deleteFiles(NEED_DELETE);
     }
 
 }
