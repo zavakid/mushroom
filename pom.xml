@@ -8,7 +8,7 @@
 
   <groupId>com.zavakid</groupId>
   <artifactId>mushroom</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>mushroom</name>
