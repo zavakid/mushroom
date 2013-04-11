@@ -19,7 +19,7 @@ if you use Maven, you can add the dependency in your POM
 ```
 
 ## User Guide
-check out the [user guide][user guide] (under writing...)
+check out the [user guide][user guide]
 
 
 
