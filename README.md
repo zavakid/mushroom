@@ -18,6 +18,8 @@ if you use Maven, you can add the dependency in your POM
 </dependency>
 ```
 
+also you can fork the [quick start example][quick start example repo]
+
 ## User Guide
 check out the [user guide][user guide]
 
@@ -25,3 +27,4 @@ check out the [user guide][user guide]
 
 [user guide]: https://github.com/zavakid/mushroom/wiki/User-Guide
 [v1 change log]: https://github.com/zavakid/mushroom/issues?milestone=2&state=closed
+[quick start example repo]: https://github.com/zavakid/mushroom-example
