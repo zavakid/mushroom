@@ -142,7 +142,6 @@ public class SampleStat {
     /**
      * Helper to keep running min/max
      */
-    @SuppressWarnings("PublicInnerClass")
     public static class MinMax {
 
         // Float.MAX_VALUE is used rather than Double.MAX_VALUE, even though the
