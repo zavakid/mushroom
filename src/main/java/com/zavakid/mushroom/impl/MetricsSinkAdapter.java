@@ -95,7 +95,10 @@ public class MetricsSinkAdapter {
     boolean putMetrics(MetricsBuffer buffer, long logicalTime) {
         if (logicalTime % period == 0) {
             LOG.debug("enqueue, logicalTime=" + logicalTime);
-            if (queue.enqueue(buffer)) return true;
+            if (queue.enqueue(buffer)) {
+                qsize.set(queue.size());
+                return true;
+            }
             dropped.incr();
             return false;
         }
@@ -135,6 +138,8 @@ public class MetricsSinkAdapter {
                     queue.clear();
                     inError = true; // Don't keep complaining ad infinitum
                 }
+            } finally {
+                qsize.set(queue.size());
             }
         }
     }
