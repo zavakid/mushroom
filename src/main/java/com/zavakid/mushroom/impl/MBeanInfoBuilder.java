@@ -27,6 +27,7 @@ import javax.management.MBeanInfo;
 
 import com.zavakid.mushroom.Metric;
 import com.zavakid.mushroom.MetricCounter;
+import com.zavakid.mushroom.MetricDelta;
 import com.zavakid.mushroom.MetricGauge;
 import com.zavakid.mushroom.MetricsTag;
 import com.zavakid.mushroom.MetricsVisitor;
@@ -77,6 +78,14 @@ public class MBeanInfoBuilder implements MetricsVisitor {
     }
 
     public void counter(MetricCounter<Long> metric, long value) {
+        attrs.add(newAttrInfo(metric, "java.lang.Long"));
+    }
+
+    public void delta(MetricDelta<Integer> metric, int value) {
+        attrs.add(newAttrInfo(metric, "java.lang.Integer"));
+    }
+
+    public void delta(MetricDelta<Long> metric, long value) {
         attrs.add(newAttrInfo(metric, "java.lang.Long"));
     }
 

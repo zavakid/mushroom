@@ -74,4 +74,20 @@ public interface MetricsVisitor {
      * @param value of the metric
      */
     public void counter(MetricCounter<Long> metric, long value);
+
+    /**
+     * Callback for integer value delta
+     * 
+     * @param metric the metric object
+     * @param value of the metric
+     */
+    public void delta(MetricDelta<Integer> metric, int value);
+
+    /**
+     * Callback for long value delta
+     * 
+     * @param metric the metric object
+     * @param value of the metric
+     */
+    public void delta(MetricDelta<Long> metric, long value);
 }

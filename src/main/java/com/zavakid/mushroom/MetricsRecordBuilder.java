@@ -72,6 +72,26 @@ public abstract class MetricsRecordBuilder {
     public abstract MetricsRecordBuilder addCounter(String name, String description, long value);
 
     /**
+     * Add an int delta metric
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param value of the metric
+     * @return self
+     */
+    public abstract MetricsRecordBuilder addDelta(String name, String description, int value);
+
+    /**
+     * Add an long delta metric
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param value of the metric
+     * @return self
+     */
+    public abstract MetricsRecordBuilder addDelta(String name, String description, long value);
+
+    /**
      * Add a int gauge metric
      * 
      * @param name of the metric

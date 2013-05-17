@@ -77,6 +77,22 @@ public class MetricsRecordBuilderImpl extends MetricsRecordBuilder {
     }
 
     @Override
+    public MetricsRecordBuilder addDelta(String name, String description, int value) {
+        if (acceptable && (metricFilter == null || metricFilter.accepts(name))) {
+            metrics.add(new MetricDeltaInt(name, description, value));
+        }
+        return this;
+    }
+
+    @Override
+    public MetricsRecordBuilder addDelta(String name, String description, long value) {
+        if (acceptable && (metricFilter == null || metricFilter.accepts(name))) {
+            metrics.add(new MetricDeltaLong(name, description, value));
+        }
+        return this;
+    }
+
+    @Override
     public MetricsRecordBuilder addGauge(String name, String description, int value) {
         if (acceptable && (metricFilter == null || metricFilter.accepts(name))) {
             metrics.add(new MetricGaugeInt(name, description, value));
@@ -139,4 +155,5 @@ public class MetricsRecordBuilderImpl extends MetricsRecordBuilder {
     List<Metric> metrics() {
         return Collections.unmodifiableList(metrics);
     }
+
 }
