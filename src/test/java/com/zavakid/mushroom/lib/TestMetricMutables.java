@@ -55,7 +55,9 @@ public class TestMetricMutables {
         List<MetricMutable> metrics = Arrays.asList(new MetricMutableCounterInt("c1", "int counter", 1),
                                                     new MetricMutableCounterLong("c2", "long counter", 2L),
                                                     new MetricMutableGaugeInt("g1", "int gauge", 3),
-                                                    new MetricMutableGaugeLong("g2", "long gauge", 4L), stat, stat2);
+                                                    new MetricMutableGaugeLong("g2", "long gauge", 4L),
+                                                    new MetricMutableDeltaInt("d1", "int delta", 5),
+                                                    new MetricMutableDeltaLong("d2", "int delta", 6L), stat, stat2);
 
         for (MetricMutable metric : metrics) {
             metric.snapshot(mb, true);
@@ -68,6 +70,8 @@ public class TestMetricMutables {
         verify(mb).addCounter("c2", "long counter", 2L);
         verify(mb).addGauge("g1", "int gauge", 3);
         verify(mb).addGauge("g2", "long gauge", 4L);
+        verify(mb).addDelta("d1", "int delta", 5);
+        verify(mb).addDelta("d2", "int delta", 6L);
         verify(mb).addCounter("s1_num_ops", "Number of ops for stat", 1L);
         verify(mb).addGauge(eq("s1_avg_time"), eq("Average time for stat"), eq(0.0, EPSILON));
         verify(mb).addGauge(eq("s1_stdev_time"), eq("Standard deviation of time for stat"), eq(0.0, EPSILON));
