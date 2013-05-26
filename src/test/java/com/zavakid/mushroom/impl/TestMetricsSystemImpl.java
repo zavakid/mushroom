@@ -45,6 +45,7 @@ import com.zavakid.mushroom.MetricsTag;
 import com.zavakid.mushroom.MoreAsserts;
 import com.zavakid.mushroom.lib.AbstractMetricsSource;
 import com.zavakid.mushroom.lib.MetricMutableCounterLong;
+import com.zavakid.mushroom.lib.MetricMutableDeltaLong;
 import com.zavakid.mushroom.lib.MetricMutableGaugeLong;
 import com.zavakid.mushroom.lib.MetricMutableStat;
 import com.zavakid.mushroom.util.FileUtils;
@@ -115,7 +116,7 @@ public class TestMetricsSystemImpl {
         MoreAsserts.assertEquals("tags", new MetricsTag[] { new MetricsTag("context", "Metrics context", "test"),
                 new MetricsTag("hostName", "Local hostname", hostname), }, r.tags());
         MoreAsserts.assertEquals("metrics", new Metric[] { new MetricCounterLong("c1", "c1 desc", 1),
-                new MetricGaugeLong("g1", "g1 desc", 2),
+                new MetricDeltaLong("d1", "d1 desc", 3L), new MetricGaugeLong("g1", "g1 desc", 2),
                 new MetricCounterLong("s1_num_ops", "Number of ops for s1 desc", 1),
                 new MetricGaugeDouble("s1_avg_time", "Average time for s1 desc", 0) }, r.metrics());
 
@@ -126,6 +127,7 @@ public class TestMetricsSystemImpl {
     private static class TestSource extends AbstractMetricsSource {
 
         final MetricMutableCounterLong c1;
+        final MetricMutableDeltaLong   d1;
         final MetricMutableGaugeLong   g1;
         final MetricMutableStat        s1;
 
@@ -133,6 +135,7 @@ public class TestMetricsSystemImpl {
             super(name);
             registry.setContext("test");
             c1 = registry.newCounter("c1", "c1 desc", 1L);
+            d1 = registry.newDelta("d1", "d1 desc", 3L);
             g1 = registry.newGauge("g1", "g1 desc", 2L);
             s1 = registry.newStat("s1", "s1 desc", "ops", "time");
         }

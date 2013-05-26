@@ -145,6 +145,36 @@ public class MetricsRegistry {
     }
 
     /**
+     * Create a mutable integer delta
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param initValue of the metric
+     * @return a new counter object
+     */
+    public MetricMutableDeltaInt newDelta(String name, String description, int initValue) {
+        checkMetricName(name);
+        MetricMutableDeltaInt ret = mf.newDelta(name, description, initValue);
+        metricsMap.put(name, ret);
+        return ret;
+    }
+
+    /**
+     * Create a mutable long integer delta
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param initValue of the metric
+     * @return a new counter object
+     */
+    public MetricMutableDeltaLong newDelta(String name, String description, long initValue) {
+        checkMetricName(name);
+        MetricMutableDeltaLong ret = mf.newDelta(name, description, initValue);
+        metricsMap.put(name, ret);
+        return ret;
+    }
+
+    /**
      * Create a mutable metric with stats
      * 
      * @param name of the metric

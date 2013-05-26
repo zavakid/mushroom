@@ -51,18 +51,24 @@ public class TestMetricsRegistry {
         r.newGauge("g1", "g1 desc", 3);
         r.newGauge("g2", "g2 desc", 4L);
         r.newStat("s1", "s1 desc", "ops", "time");
+        r.newDelta("d1", "d1 desc", 5);
+        r.newDelta("d2", "d2 desc", 6L);
 
-        assertEquals("num metrics in registry", 5, r.metrics().size());
+        assertEquals("num metrics in registry", 7, r.metrics().size());
         verify(factory).newCounter("c1", "c1 desc", 1);
         verify(factory).newCounter("c2", "c2 desc", 2L);
         verify(factory).newGauge("g1", "g1 desc", 3);
         verify(factory).newGauge("g2", "g2 desc", 4L);
         verify(factory).newStat("s1", "s1 desc", "ops", "time", false);
+        verify(factory).newDelta("d1", "d1 desc", 5);
+        verify(factory).newDelta("d2", "d2 desc", 6L);
         assertTrue("c1 found", r.get("c1") instanceof MetricMutableCounterInt);
         assertTrue("c2 found", r.get("c2") instanceof MetricMutableCounterLong);
         assertTrue("g1 found", r.get("g1") instanceof MetricMutableGaugeInt);
         assertTrue("g2 found", r.get("g2") instanceof MetricMutableGaugeLong);
         assertTrue("s1 found", r.get("s1") instanceof MetricMutableStat);
+        assertTrue("s1 found", r.get("d1") instanceof MetricMutableDeltaInt);
+        assertTrue("s1 found", r.get("d2") instanceof MetricMutableDeltaLong);
 
         expectMetricsException("Metric name c1 already exists", new Runnable() {
 

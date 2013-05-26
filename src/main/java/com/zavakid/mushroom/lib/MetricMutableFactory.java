@@ -87,6 +87,50 @@ public class MetricMutableFactory {
     }
 
     /**
+     * Create a mutable integer delta
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param initValue of the metric
+     * @return a new metric object
+     */
+    public MetricMutableDeltaInt newDelta(String name, String description, int initValue) {
+        return new MetricMutableDeltaInt(name, description, initValue);
+    }
+
+    /**
+     * Create a mutable integer delta with name only. Usually gets overridden.
+     * 
+     * @param name of the metric
+     * @return a new metric object
+     */
+    public MetricMutableDeltaInt newDeltaInt(String name) {
+        return new MetricMutableDeltaInt(name, Metric.NO_DESCRIPTION, 0);
+    }
+
+    /**
+     * Create a mutable long integer delta
+     * 
+     * @param name of the metric
+     * @param description of the metric
+     * @param initValue of the metric
+     * @return a new metric object
+     */
+    public MetricMutableDeltaLong newDelta(String name, String description, long initValue) {
+        return new MetricMutableDeltaLong(name, description, initValue);
+    }
+
+    /**
+     * Create a mutable long integer delta with a name Usually gets overridden.
+     * 
+     * @param name of the metric
+     * @return a new metric object
+     */
+    public MetricMutableDeltaLong newDeltaLong(String name) {
+        return new MetricMutableDeltaLong(name, Metric.NO_DESCRIPTION, 0L);
+    }
+
+    /**
      * Create a mutable integer gauge
      * 
      * @param name of the metric
