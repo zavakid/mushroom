@@ -8,7 +8,7 @@
 
   <groupId>com.zavakid</groupId>
   <artifactId>mushroom</artifactId>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.4</version>
   <packaging>jar</packaging>
 
   <name>mushroom</name>
@@ -35,7 +35,7 @@
     <url>git@github.com:zavakid/mushroom.git</url>
     <connection>scm:git:git@github.com:zavakid/mushroom.git</connection>
     <developerConnection>scm:git:git@github.com:zavakid/mushroom.git</developerConnection>
-    <tag>mushroom-0.3</tag>
+    <tag>mushroom-0.4</tag>
   </scm>
 
   <properties>
