@@ -55,6 +55,11 @@ public enum DefaultMetricsSystem implements MetricsSystem {
         return impl.register(name, desc, source);
     }
 
+    @Override
+    public <T extends MetricsSource> T registerIfAbsent(String name, String desc, T source) {
+        return impl.registerIfAbsent(name, desc, source);
+    }
+
     /**
      * Common static method to register a source
      * 
@@ -68,8 +73,26 @@ public enum DefaultMetricsSystem implements MetricsSystem {
         return INSTANCE.register(name, desc, source);
     }
 
+    /**
+     * common static method to register a source if absent, see
+     * {@link MetricsSystem#registerIfAbsent(String, String, MetricsSource)}
+     * 
+     * @param name
+     * @param desc
+     * @param source
+     * @return
+     */
+    public static <T extends MetricsSource> T registerSourceIfAbsent(String name, String desc, T source) {
+        return INSTANCE.registerIfAbsent(name, desc, source);
+    }
+
     public <T extends MetricsSink> T register(String name, String desc, T sink) {
         return impl.register(name, desc, sink);
+    }
+
+    @Override
+    public <T extends MetricsSink> T registerIfAbsent(String name, String desc, T sink) {
+        return impl.registerIfAbsent(name, desc, sink);
     }
 
     public void register(Callback callback) {

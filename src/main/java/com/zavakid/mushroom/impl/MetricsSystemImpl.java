@@ -204,12 +204,34 @@ public class MetricsSystemImpl implements MetricsSystem {
         return source;
     }
 
-    synchronized void registerSource(String name, String desc, MetricsSource source) {
+    @Override
+    public synchronized <T extends MetricsSource> T registerIfAbsent(final String name, final String desc,
+                                                                     final T source) {
+        MetricsSource oldSource = null;
+        if (monitoring) {
+            oldSource = registerSource(name, desc, source);
+        }
+
+        // the source is the oldSource, means that the source register success
+        if (source == oldSource) {
+            register(new AbstractCallback() {
+
+                @Override
+                public void postStart() {
+                    registerSource(name, desc, source);
+                }
+
+            });
+        }
+        return (T) oldSource;
+    }
+
+    synchronized MetricsSource registerSource(String name, String desc, MetricsSource source) {
         Contracts.checkNotNull(config, "config");
         MetricsSourceAdapter sa = sources.get(name);
         if (sa != null) {
             LOG.warn("Source name " + name + " already exists!");
-            return;
+            return sa.source();
         }
         MetricsConfig conf = sourceConfigs.get(name);
         sa = conf != null ? new MetricsSourceAdapter(prefix, name, desc, source, injectedTags, period, conf) : new MetricsSourceAdapter(
@@ -223,6 +245,7 @@ public class MetricsSystemImpl implements MetricsSystem {
         sources.put(name, sa);
         sa.start();
         LOG.debug("Registered source " + name);
+        return sa.source();
     }
 
     @Override
@@ -243,12 +266,33 @@ public class MetricsSystemImpl implements MetricsSystem {
         return sink;
     }
 
-    synchronized void registerSink(String name, String desc, MetricsSink sink) {
+    @Override
+    public synchronized <T extends MetricsSink> T registerIfAbsent(final String name, final String desc, final T sink) {
+        MetricsSink oldSink = null;
+        if (monitoring) {
+            oldSink = registerSink(name, desc, sink);
+        }
+
+        // the sink is the oldSource, means that the source register success
+        if (sink == oldSink) {
+            register(new AbstractCallback() {
+
+                @Override
+                public void postStart() {
+                    registerSink(name, desc, sink);
+                }
+
+            });
+        }
+        return (T) oldSink;
+    }
+
+    synchronized MetricsSink registerSink(String name, String desc, MetricsSink sink) {
         Contracts.checkNotNull(config, "config");
         MetricsSinkAdapter sa = sinks.get(name);
         if (sa != null) {
             LOG.warn("Sink name " + name + " already exists!");
-            return;
+            return sa.sink();
         }
         MetricsConfig conf = sinkConfigs.get(name);
         sa = conf != null ? newSink(name, desc, sink, conf) : newSink(name, desc, sink,
@@ -256,6 +300,7 @@ public class MetricsSystemImpl implements MetricsSystem {
         sinks.put(name, sa);
         sa.start();
         LOG.debug("Registered sink " + name);
+        return sa.sink();
     }
 
     @Override
@@ -485,11 +530,9 @@ public class MetricsSystemImpl implements MetricsSystem {
                     numSources = sources.size();
                     numSinks = sinks.size();
                 }
-                MetricsRecordBuilder rb = builder.addRecord(MS_NAME).setContext(MS_CONTEXT).addGauge(NUM_SOURCES_KEY,
-                                                                                                     NUM_SOURCES_DESC,
-                                                                                                     numSources).addGauge(NUM_SINKS_KEY,
-                                                                                                                          NUM_SINKS_DESC,
-                                                                                                                          numSinks);
+                MetricsRecordBuilder rb = builder.addRecord(MS_NAME).setContext(MS_CONTEXT)
+                                                 .addGauge(NUM_SOURCES_KEY, NUM_SOURCES_DESC, numSources)
+                                                 .addGauge(NUM_SINKS_KEY, NUM_SINKS_DESC, numSinks);
                 synchronized (MetricsSystemImpl.this) {
                     for (MetricsSinkAdapter sa : sinks.values()) {
                         sa.snapshot(rb, all);
@@ -519,4 +562,5 @@ public class MetricsSystemImpl implements MetricsSystem {
         }
         MBeans.unregister(mbeanName);
     }
+
 }

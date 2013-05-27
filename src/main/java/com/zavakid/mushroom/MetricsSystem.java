@@ -52,6 +52,34 @@ public interface MetricsSystem extends MetricsSystemMXBean {
     <T extends MetricsSink> T register(String name, String desc, T sink);
 
     /**
+     * register a metrics source
+     * <p>
+     * if the source has registered, will return the old source.<br/>
+     * if the source has not register before, will return the source
+     * 
+     * @since 0.5
+     * @param name
+     * @param desc
+     * @param source
+     * @return
+     */
+    <T extends MetricsSource> T registerIfAbsent(String name, String desc, T source);
+
+    /**
+     * register a metrics sink
+     * <p>
+     * if the sink has registered, will return the old sink.<br/>
+     * if the sink has not register before, will return the sink
+     * 
+     * @since 0.5
+     * @param name
+     * @param desc
+     * @param sink
+     * @return
+     */
+    <T extends MetricsSink> T registerIfAbsent(String name, String desc, T sink);
+
+    /**
      * Register a callback interface for JMX events
      * 
      * @param callback the callback object implementing the MBean interface.

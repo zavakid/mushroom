@@ -85,10 +85,15 @@ public class TestMetricsSystemImpl {
         ms.start();
         TestSource s1 = ms.register("s1", "s1 desc", new TestSource("s1rec"));
         TestSource s2 = ms.register("s2", "s2 desc", new TestSource("s2rec"));
-        TestSource s3 = ms.register("s3", "s3 desc", new TestSource("s3rec"));
+        ms.registerIfAbsent("s3", "s3 desc", new TestSource("s3rec"));
+        TestSource s4 = ms.registerIfAbsent("s3", "s3 desc", new TestSource("s3rec"));
+        TestSource s5 = ms.registerIfAbsent("s3", "s3 desc", new TestSource("s3rec"));
+        s1.s1.add(0);
         s1.s1.add(0);
         s2.s1.add(0);
-        s3.s1.add(0);
+        s2.s1.add(0);
+        s4.s1.add(0);
+        s5.s1.add(0);
         MetricsSink sink1 = mock(MetricsSink.class);
         MetricsSink sink2 = mock(MetricsSink.class);
         MetricsSink sink3 = mock(MetricsSink.class);
@@ -117,7 +122,7 @@ public class TestMetricsSystemImpl {
                 new MetricsTag("hostName", "Local hostname", hostname), }, r.tags());
         MoreAsserts.assertEquals("metrics", new Metric[] { new MetricCounterLong("c1", "c1 desc", 1),
                 new MetricDeltaLong("d1", "d1 desc", 3L), new MetricGaugeLong("g1", "g1 desc", 2),
-                new MetricCounterLong("s1_num_ops", "Number of ops for s1 desc", 1),
+                new MetricCounterLong("s1_num_ops", "Number of ops for s1 desc", 2),
                 new MetricGaugeDouble("s1_avg_time", "Average time for s1 desc", 0) }, r.metrics());
 
         // Skip the system metrics for now.
